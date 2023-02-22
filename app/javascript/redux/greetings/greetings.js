@@ -4,7 +4,7 @@ const URL = 'api/v1/greetings';
 export const fetchGreeting = createAsyncThunk( "greeting/fetchingGreeting", async () => {
       const response = await fetch(URL);
       const data = await response.json();
-      return data[0];
+      return data;
     }
   )
 
@@ -17,9 +17,7 @@ export const fetchGreeting = createAsyncThunk( "greeting/fetchingGreeting", asyn
       },
     },
     extraReducers: {
-      [fetchGreeting.fulfilled]: (state, action) => {
-        state.push(action.payload);
-      },
+      [fetchGreeting.fulfilled]: (state, action) => action.payload,
     },
   });
 
