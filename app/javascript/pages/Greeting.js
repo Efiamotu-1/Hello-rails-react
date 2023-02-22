@@ -6,16 +6,16 @@ const Greeting = () => {
   const dispatch = useDispatch();
   const greeting = useSelector((state) => state.greetings);
 
+
   useEffect(() => {
     dispatch(fetchGreeting());
   }, []);
 
   return (
-    <div>{Object.values(greeting).map((greeting) => (
-      <h1>{greeting.message}</h1>
-  ))}
-  </div>
-    )
+    greeting?.map(greet => {
+     return <p>{greet.message}</p>
+    })
+)
 }
 
 export default Greeting
